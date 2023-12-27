@@ -27,14 +27,28 @@ class MainActivity : AppCompatActivity() {
         binding.btnNext.setOnClickListener {
             val secondPage = Intent(this, SecondActivity::class.java)
             secondPage.putExtra(USERNAME, binding.tvName.text.toString())
-            startActivity(secondPage)
+            if (binding.tvName.text.toString().isEmpty()) {
+                binding.tvNameLayout.isHelperTextEnabled = true
+            } else {
+                startActivity(secondPage)
+                binding.tvNameLayout.isHelperTextEnabled = false
+            }
+        }
+
+        binding.tvPalindromeLayout.setOnClickListener {
+            binding.tvPalindromeLayout.isHelperTextEnabled = false
         }
 
         binding.btnCheck.setOnClickListener {
-            if (isPalindrome(binding.tvPalindrome.text.toString())) {
-                showDialog("isPalindrome")
+            if (binding.tvPalindrome.text.toString().isEmpty()) {
+                binding.tvPalindromeLayout.isHelperTextEnabled = true
             } else {
-                showDialog("not palindrome")
+                binding.tvPalindromeLayout.isHelperTextEnabled = false
+                if (isPalindrome(binding.tvPalindrome.text.toString())) {
+                    showDialog("isPalindrome")
+                } else {
+                    showDialog("not palindrome")
+                }
             }
         }
     }

@@ -42,7 +42,9 @@ class ThirdActivity : AppCompatActivity() {
             userAdapter = UserAdapter()
             layoutManager = LinearLayoutManager(this@ThirdActivity)
             adapter = userAdapter.withLoadStateFooter(
-                footer = LoadingStateAdapter()
+                footer = LoadingStateAdapter {
+                    userAdapter.retry()
+                }
             )
 
             userAdapter.setOnItemClickCallback(object : UserAdapter.OnItemClickCallback {
