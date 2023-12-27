@@ -73,7 +73,7 @@
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginBottom="32dp"
                 android:backgroundTint="#2B637B"
-                android:text="@string/next"
+                android:text="@string/choose_a_user"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

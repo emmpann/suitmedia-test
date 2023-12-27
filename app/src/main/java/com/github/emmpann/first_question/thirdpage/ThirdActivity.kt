@@ -3,6 +3,7 @@ package com.github.emmpann.first_question.thirdpage
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -58,7 +59,11 @@ class ThirdActivity : AppCompatActivity() {
         }
 
         viewModel.user.observe(this) {
-            userAdapter.submitData(lifecycle, it)
+            if (it != null) {
+                userAdapter.submitData(lifecycle, it)
+            } else {
+                binding.tvNotfound.visibility = View.VISIBLE
+            }
         }
 
         binding.swipeRefreshLayout.setOnRefreshListener {
