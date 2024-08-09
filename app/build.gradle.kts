@@ -11,8 +11,8 @@ android {
 
     defaultConfig {
         applicationId = "com.github.emmpann.first_question"
-        minSdk = 19
-        targetSdk = 31
+        minSdk = 21
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 

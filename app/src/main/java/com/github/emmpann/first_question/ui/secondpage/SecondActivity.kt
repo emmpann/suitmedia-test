@@ -1,13 +1,17 @@
-package com.github.emmpann.first_question.secondpage
+package com.github.emmpann.first_question.ui.secondpage
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.github.emmpann.first_question.R
 import com.github.emmpann.first_question.databinding.ActivitySecondBinding
-import com.github.emmpann.first_question.firstpage.MainActivity
-import com.github.emmpann.first_question.thirdpage.ThirdActivity
-import com.github.emmpann.first_question.thirdpage.ThirdViewModel
+import com.github.emmpann.first_question.ui.firstpage.MainActivity
+import com.github.emmpann.first_question.ui.thirdpage.ThirdActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,6 +25,11 @@ class SecondActivity : AppCompatActivity() {
         binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        WindowCompat.setDecorFitsSystemWindows(
+            window,
+            false
+        )
+
         setupClickListener()
         setupView()
         setupObserver()
@@ -33,6 +42,15 @@ class SecondActivity : AppCompatActivity() {
 
         viewModel.selectedName.observe(this) {
             binding.tvSelectedUser.text = it
+            binding.stepInformation.visibility = View.GONE
+        }
+
+        viewModel.selectedAvatar.observe(this) {
+            Glide.with(this)
+                .load(it)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .circleCrop()
+                .into(binding.ivPhoto)
         }
     }
 
@@ -44,8 +62,16 @@ class SecondActivity : AppCompatActivity() {
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        val selectedName = data?.getStringExtra(ThirdActivity.SELECTED_USERNAME)
-        if (selectedName != null) viewModel.setSelectedName(selectedName)
+        data?.apply {
+            getStringExtra(ThirdActivity.SELECTED_USERNAME)?.let { viewModel.setSelectedName(it) }
+            getStringExtra(ThirdActivity.SELECTED_AVATAR)?.let { viewModel.setSelectedAvatar(it) }
+        }
+
+//        val selectedName = data?.getStringExtra(ThirdActivity.SELECTED_USERNAME)
+//        if (selectedName != null) viewModel.setSelectedName(selectedName)
+//
+//        val selectedAvatar = data?.getStringExtra(ThirdActivity.SELECTED_AVATAR)
+//        if (selectedAvatar != null) viewModel.setSelectedAvatar(selectedAvatar)
     }
 
     private fun setupClickListener() {

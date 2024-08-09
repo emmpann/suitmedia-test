@@ -1,5 +1,7 @@
-package com.github.emmpann.first_question.data
+package com.github.emmpann.first_question.di
 
+import com.github.emmpann.first_question.data.ApiService
+import com.github.emmpann.first_question.data.UserRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

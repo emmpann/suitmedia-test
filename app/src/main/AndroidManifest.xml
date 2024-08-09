@@ -16,13 +16,13 @@
         android:theme="@style/Theme.Firstquestion"
         tools:targetApi="31" >
         <activity
-            android:name=".thirdpage.ThirdActivity"
+            android:name=".ui.thirdpage.ThirdActivity"
             android:exported="false" />
         <activity
-            android:name=".secondpage.SecondActivity"
+            android:name=".ui.secondpage.SecondActivity"
             android:exported="false" />
         <activity
-            android:name=".firstpage.MainActivity"
+            android:name=".ui.firstpage.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

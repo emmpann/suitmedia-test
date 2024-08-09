@@ -1,4 +1,4 @@
-package com.github.emmpann.first_question.thirdpage
+package com.github.emmpann.first_question.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

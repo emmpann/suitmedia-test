@@ -1,4 +1,4 @@
-package com.github.emmpann.first_question.secondpage
+package com.github.emmpann.first_question.ui.secondpage
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -19,7 +19,15 @@ class SecondViewModel @Inject constructor() : ViewModel() {
 
     val selectedName: LiveData<String> = _selectedName
 
+    private val _selectedAvatar = MutableLiveData<String>()
+
+    val selectedAvatar: LiveData<String> = _selectedAvatar
+
     fun setSelectedName(name: String) {
         _selectedName.value = name
+    }
+
+    fun setSelectedAvatar(avatarUrl: String) {
+        _selectedAvatar.value = avatarUrl
     }
 }

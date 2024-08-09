@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">first-question</string>
     <string name="check">CHECK</string>
-    <string name="name">name</string>
-    <string name="palindrome">palindrome</string>
+    <string name="name">Name</string>
+    <string name="palindrome">Palindrome</string>
     <string name="selected_user_name">Selected User Name</string>
     <string name="next">NEXT</string>
     <string name="coba_lagi">coba lagi</string>
